@@ -48,7 +48,7 @@
         {
             "label": "Compilar OpenMPI",
             "type": "shell",
-            "command": "mpicc",
+            "command": "gcc",
             "args": [
                 "-Wall",
                 "-g",
@@ -56,6 +56,11 @@
                 "-std=c11",
                 "-lm",
                 "src/mpi.c",
+                "-I",
+                "C:/Program Files (x86)/Microsoft SDKs/MPI/Include",
+                "-L",
+                "C:/Program Files (x86)/Microsoft SDKs/MPI/Lib/x64",
+                "-lmsmpi",
                 "-o",
                 "bin/mpi"
             ],
@@ -71,7 +76,7 @@
             "command": "powershell",
             "args": [
                 "-c",
-                "gcc -Wall -g -O0 -std=c11 -lm src/seq.c -o bin/seq; gcc -Wall -g -O0 -std=c11 -lm -pthread src/pth.c -o bin/pth; mpicc -Wall -g -O0 -std=c11 -lm src/mpi.c -o bin/mpi"
+                "gcc -Wall -g -O0 -std=c11 -lm src/seq.c -o bin/seq; gcc -Wall -g -O0 -std=c11 -lm -pthread src/pth.c -o bin/pth; gcc -Wall -g -O0 -std=c11 -lm src/mpi.c -I 'C:/Program Files (x86)/Microsoft SDKs/MPI/Include' -L 'C:/Program Files (x86)/Microsoft SDKs/MPI/Lib/x64' -lmsmpi -o bin/mpi"
             ],
             "group": "build",
             "problemMatcher": [

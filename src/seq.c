@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
     print_results(stations, num_stations, 0);  // Mostrar todas
 
     // Mostrar estadísticas de rendimiento
-    printf("\n========== ESTADÍSTICAS DE RENDIMIENTO ==========\n");
+    printf("\n========== ESTADÍSTICAS DE RENDIMIENTO SECUENCIAL ==========\n");
     printf("Tiempo total: %.3f ms (%.6f s)\n", elapsed_time_ms, elapsed_time_s);
     printf("Registros procesados: %d\n", num_readings);
     printf("Estaciones únicas: %d\n", num_stations);

@@ -174,7 +174,7 @@ int main(int argc, char *argv[]) {
     print_results(final_stations, final_num_stations, 0);
 
     // Mostrar estadísticas de rendimiento
-    printf("\n========== ESTADÍSTICAS DE RENDIMIENTO ==========\n");
+    printf("\n========== ESTADÍSTICAS DE RENDIMIENTO POSIX THREADS==========\n");
     printf("Tiempo de cómputo (sin E/S): %.3f ms (%.6f s)\n", elapsed_time_ms, elapsed_time_s);
     printf("Registros procesados: %d\n", num_readings);
     printf("Estaciones únicas: %d\n", final_num_stations);

@@ -1,7 +1,8 @@
 # Makefile para Análisis de Temperaturas - HPC 2019
 
 CC = gcc
-MPICC = mpicc
+MPI_INCLUDES = -I"C:/Program Files (x86)/Microsoft SDKs/MPI/Include"
+MPI_LIBS = -L"C:/Program Files (x86)/Microsoft SDKs/MPI/Lib/x64" -lmsmpi
 CFLAGS = -Wall -O3 -std=c11
 LDFLAGS = -lm
 PTHREAD_FLAGS = -pthread
@@ -29,7 +30,7 @@ $(OBJ_DIR)/pth.o: $(SRC_DIR)/pth.c $(SRC_DIR)/common.h
 	$(CC) $(CFLAGS) $(PTHREAD_FLAGS) -c $< -o $@
 
 $(OBJ_DIR)/mpi.o: $(SRC_DIR)/mpi.c $(SRC_DIR)/common.h
-	$(MPICC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(MPI_INCLUDES) -c $< -o $@
 
 # Reglas de linkeo de ejecutables
 $(BIN_DIR)/seq: $(OBJ_DIR)/seq.o
@@ -39,7 +40,7 @@ $(BIN_DIR)/pth: $(OBJ_DIR)/pth.o
 	$(CC) $(CFLAGS) $(PTHREAD_FLAGS) $^ -o $@ $(LDFLAGS)
 
 $(BIN_DIR)/mpi: $(OBJ_DIR)/mpi.o
-	$(MPICC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(MPI_LIBS)
 
 clean:
 	@echo "Limpiando..."

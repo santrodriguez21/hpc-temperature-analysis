@@ -31,8 +31,8 @@
             "program": "${workspaceFolder}/bin/pth",
             "args": [
                 "data/sample_data.csv",
-                "2000000",  // Número de líneas a procesar
-                "4"      // Número de hilos
+                "4000000",  // Número de líneas a procesar
+                "16"      // Número de hilos
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -53,9 +53,13 @@
             "name": "Ejecutar OpenMPI",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/mpi",
+            "program": "C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe",
             "args": [
+                "-n",
+                "16", // Número de hilos
+                "${workspaceFolder}\\bin\\mpi.exe",
                 "data/sample_data.csv",
+                "4000000" // Número de líneas a procesar
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
