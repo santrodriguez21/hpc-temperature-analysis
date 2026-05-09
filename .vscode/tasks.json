@@ -71,18 +71,39 @@
             "detail": "Compila la versión paralela distribuida con OpenMPI."
         },
         {
-            "label": "Compilar Todo",
+            "label": "Compilar MapReduce",
             "type": "shell",
-            "command": "powershell",
+            "command": "gcc",
             "args": [
-                "-c",
-                "gcc -Wall -g -O0 -std=c11 -lm src/seq.c -o bin/seq; gcc -Wall -g -O0 -std=c11 -lm -pthread src/pth.c -o bin/pth; gcc -Wall -g -O0 -std=c11 -lm src/mpi.c -I 'C:/Program Files (x86)/Microsoft SDKs/MPI/Include' -L 'C:/Program Files (x86)/Microsoft SDKs/MPI/Lib/x64' -lmsmpi -o bin/mpi"
+                "-Wall",
+                "-g",
+                "-O0",
+                "-std=c11",
+                "-lm",
+                "-pthread",
+                "src/mr.c",
+                "-o",
+                "bin/mr"
             ],
             "group": "build",
             "problemMatcher": [
                 "$gcc"
             ],
-            "detail": "Compila todas las versiones (seq, pth, mpi)."
+            "detail": "Compila la versión con paradigma MapReduce usando Pthreads."
+        },
+        {
+            "label": "Compilar Todo",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-c",
+                "gcc -Wall -g -O0 -std=c11 -lm src/seq.c -o bin/seq; gcc -Wall -g -O0 -std=c11 -lm -pthread src/pth.c -o bin/pth; gcc -Wall -g -O0 -std=c11 -lm src/mpi.c -I 'C:/Program Files (x86)/Microsoft SDKs/MPI/Include' -L 'C:/Program Files (x86)/Microsoft SDKs/MPI/Lib/x64' -lmsmpi -o bin/mpi; gcc -Wall -g -O0 -std=c11 -lm -pthread src/mr.c -o bin/mr"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Compila todas las versiones (seq, pth, mpi, mr)."
         },
         {
             "label": "Limpiar Binarios",

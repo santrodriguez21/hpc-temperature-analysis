@@ -75,6 +75,32 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "name": "Ejecutar MapReduce",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/mr.exe",
+            "args": [
+                "data/sample_data.csv",
+                "4000000",
+                "4",
+                "4"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+            "preLaunchTask": "Compilar MapReduce",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         }
     ]
 }
