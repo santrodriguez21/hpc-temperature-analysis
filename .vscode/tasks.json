@@ -1,0 +1,97 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar Secuencial",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-Wall",
+                "-g",
+                "-O0",
+                "-std=c11",
+                "-lm",
+                "src/seq.c",
+                "-o",
+                "bin/seq"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Compila la versión secuencial del análisis de temperaturas."
+        },
+        {
+            "label": "Compilar POSIX Threads",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-Wall",
+                "-g",
+                "-O0",
+                "-std=c11",
+                "-lm",
+                "-pthread",
+                "src/pth.c",
+                "-o",
+                "bin/pth"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Compila la versión paralela con POSIX Threads (pthreads)."
+        },
+        {
+            "label": "Compilar OpenMPI",
+            "type": "shell",
+            "command": "mpicc",
+            "args": [
+                "-Wall",
+                "-g",
+                "-O0",
+                "-std=c11",
+                "-lm",
+                "src/mpi.c",
+                "-o",
+                "bin/mpi"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Compila la versión paralela distribuida con OpenMPI."
+        },
+        {
+            "label": "Compilar Todo",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-c",
+                "gcc -Wall -g -O0 -std=c11 -lm src/seq.c -o bin/seq; gcc -Wall -g -O0 -std=c11 -lm -pthread src/pth.c -o bin/pth; mpicc -Wall -g -O0 -std=c11 -lm src/mpi.c -o bin/mpi"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Compila todas las versiones (seq, pth, mpi)."
+        },
+        {
+            "label": "Limpiar Binarios",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-c",
+                "Remove-Item -Path bin -Recurse -Force -ErrorAction SilentlyContinue; Write-Host '✓ Limpieza completada'"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Elimina todos los binarios compilados."
+        }
+    ]
+}
